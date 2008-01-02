@@ -12,6 +12,7 @@ Patch0:         %{name}-rootbuildfix.patch
 Patch1:         %{name}-2.1.0-errno-fix.patch
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+BuildRoot:      %{_tmppath}/%{name}-buildroot
 
 %description
 Wipe is a tool that effectively degauses the surface of a hard
