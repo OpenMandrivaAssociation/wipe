@@ -1,6 +1,6 @@
 Name:           wipe
 Version:        2.2.0
-Release:        %mkrel 6
+Release:        %mkrel 7
 Epoch:          0
 Summary:        Secure file deletion utility 
 License:        GPL
@@ -42,7 +42,7 @@ rm -rf %{buildroot}/%{_datadir}/doc/%{name}
 %{__rm} -rf %{buildroot}
 
 %post
-%{_sbindir}/update-alternatives --install %{_bindir}/wipe wipe %{_bindir}/wipe.wipe 10 --slave %{_mandir}/man1/wipe.1.bz2 wipe.1.bz2 %{_mandir}/man1/wipe.wipe.1.bz2
+%{_sbindir}/update-alternatives --install %{_bindir}/wipe wipe %{_bindir}/wipe.wipe 10 --slave %{_mandir}/man1/wipe.1.lzma wipe.1.lzma %{_mandir}/man1/wipe.wipe.1.lzma
 
 %postun
 %{_sbindir}/update-alternatives --remove wipe %{_bindir}/wipe.wipe
