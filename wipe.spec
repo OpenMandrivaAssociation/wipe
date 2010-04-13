@@ -1,15 +1,14 @@
 Name:           wipe
-Version:        2.2.0
-Release:        %mkrel 8
+Version:        2.3.1
+Release:        %mkrel 1
 Epoch:          0
 Summary:        Secure file deletion utility 
-License:        GPL
+License:        GPLv2
 Group:          File tools
 URL:            http://wipe.sourceforge.net/
 Source0:        http://unc.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
 Source1:        http://unc.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2.sig
 Patch0:         %{name}-rootbuildfix.patch
-Patch1:         %{name}-2.1.0-errno-fix.patch
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildRoot:      %{_tmppath}/%{name}-buildroot
@@ -23,14 +22,13 @@ erased from a hard drive is unrecoverable.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
-%{configure2_5x}
-%{make}
+%configure2_5x
+%make
 
 %install
-%{__rm} -rf %{buildroot}
+rm -rf %{buildroot}
 %{makeinstall}
 %{__mv} %{buildroot}%{_bindir}/wipe %{buildroot}%{_bindir}/wipe.wipe
 %{__mv} %{buildroot}%{_mandir}/man1/wipe.1 %{buildroot}%{_mandir}/man1/wipe.wipe.1
@@ -39,7 +37,7 @@ erased from a hard drive is unrecoverable.
 rm -rf %{buildroot}/%{_datadir}/doc/%{name}
 
 %clean
-%{__rm} -rf %{buildroot}
+rm -rf %{buildroot}
 
 %post
 %{_sbindir}/update-alternatives --install %{_bindir}/wipe wipe %{_bindir}/wipe.wipe 10 --slave %{_mandir}/man1/wipe.1.lzma wipe.1.lzma %{_mandir}/man1/wipe.wipe.1.lzma
