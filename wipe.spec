@@ -1,6 +1,6 @@
 Name:           wipe
 Version:        2.3.1
-Release:        %mkrel 1
+Release:        %mkrel 2
 Epoch:          0
 Summary:        Secure file deletion utility 
 License:        GPLv2
