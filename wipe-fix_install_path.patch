@@ -1,0 +1,25 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -57,15 +57,15 @@ info:   $(BIN_OUT)
+ 	@ldd $(BIN_OUT)
+ 
+ install: $(BIN_OUT)
+-	$(INSTALL_BIN) -d $(bindir)
+-	$(INSTALL_BIN) -s $(BIN_OUT) $(bindir)
+-	$(INSTALL) -d $(mandir)/man1
+-	$(INSTALL) -o root -m 0644 wipe.1 $(mandir)/man1/
+-	rm -rf $(datadir)/doc/wipe*
+-	$(INSTALL) -d $(datadir)/doc/wipe
++	$(INSTALL_BIN) -d $(DESTDIR)/$(bindir)
++	$(INSTALL_BIN) -s $(BIN_OUT) $(DESTDIR)/$(bindir)
++	$(INSTALL) -d $(DESTDIR)/$(mandir)/man1
++	$(INSTALL) -m 0644 wipe.1 $(DESTDIR)/$(mandir)/man1/
++	rm -rf $(DESTDIR)/$(datadir)/doc/wipe*
++	$(INSTALL) -d $(DESTDIR)/$(datadir)/doc/wipe
+ 
+ 	for file in $(DOCS); do \
+-		$(INSTALL) -o root -m 0644 $$file $(datadir)/doc/wipe/; \
++		$(INSTALL) -m 0644 $$file $(DESTDIR)/$(datadir)/doc/wipe/; \
+ 	done
+ 
+ install_home: $(BIN_OUT)

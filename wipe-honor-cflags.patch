@@ -1,0 +1,21 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -4,7 +4,7 @@ VERSION='2.3.1'
+ DOCS='LICENSE copyright CHANGES README TODO INSTALL TESTING'
+ 
+ CC=@CC@
+-CFLAGS=@CFLAGS@ -I@srcdir@ -D@OSTYPE@ $(DEFINES)
++CFLAGS+=@CFLAGS@ -I@srcdir@ -D@OSTYPE@ $(DEFINES)
+ DEBUG=@DEBUG@ -I@srcdir@ -D@OSTYPE@ $(DEFINES)
+ 
+ LIBS=@LIBS@
+@@ -31,7 +31,7 @@ INSTALL_HOME=mv -f
+ all:	$(REQ) $(BIN)
+ 
+ $(BIN):	main.o wipe.o rand.o dir.o file.o blkdev.o lock.o text.o str.o percent.o prompt.o io.o mt.o
+-	$(CC) $(LIBS) *.o -o $@
++	$(CC) $(CFLAGS) $(DEBUG) $(LIBS) *.o -o $@
+ 
+ 
+ # restores everything to a pre-configured state
+
